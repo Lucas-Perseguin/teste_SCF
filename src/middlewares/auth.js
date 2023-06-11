@@ -24,7 +24,6 @@ module.exports = function (req, res, next) {
         const userData = data.find((user) => user.id === userId);
 
         if (userData) {
-          console.log(userData);
           res.locals.userData = userData;
           return next();
         } else throw new Error("Acesso não autorizado"); //Caso o usuário da sessão recebida não exista
