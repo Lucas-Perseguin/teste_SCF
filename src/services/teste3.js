@@ -1,4 +1,5 @@
 const data = require("../fakeData").fakeData;
+const { sessions } = require("../fakeData");
 
 module.exports = function (req, res) {
   const { name } = req.query;
@@ -13,6 +14,14 @@ module.exports = function (req, res) {
     const userIndex = data.findIndex((user) => user.name === name);
 
     if (userIndex) {
+      //Encontra a sessão do usuário
+      const sessionIndex = sessions.findIndex(
+        (session) => session.userId === data[userIndex].id
+      );
+
+      //Remove a sessão do usuário
+      sessions.splice(sessionIndex, 1);
+
       //Remove o objeto do usuário do array
       const deletedUser = data.splice(userIndex, 1);
 
