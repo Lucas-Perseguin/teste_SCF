@@ -2,7 +2,10 @@ const jwt = require("jsonwebtoken");
 const data = require("../fakeData").fakeData;
 const { sessions } = require("../fakeData");
 
-//Estou usando jwt para validar o acesso de modo que apenas o próprio usuário possa modificar ou excluir seus dados
+/*Estou usando jwt para validar o acesso de modo que apenas o próprio usuário possa modificar ou excluir seus dados
+Como não há login o token irá espirar e não haverá mais como modificar ou excluir o usuário,
+nesse caso seria possível criar uma rota onde o usuário pode (enquanto seu token estiver válido) criar um novo token para a conta que irá durar mais x tempo
+e continuar sendo recriado pelo acesso à rota conforme for necessário*/
 module.exports = function (req, res, next) {
   const { authorization } = req.headers;
 
