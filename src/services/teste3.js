@@ -26,7 +26,8 @@ module.exports = function (req, res) {
       const deletedUser = data.splice(userIndex, 1);
 
       /*Para maior performance
-      data[userIndex] = null;
+        sessions[sessionIndex] = null;
+        data[userIndex] = null;
       */
 
       //Enviando status de sucesso e também esotu enviando o objeto do usuário excluído
